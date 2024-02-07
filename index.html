@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="title">Will You Be My Valentine VAR=SHITT?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      height: 100vh;
+    }
+    h1 {
+      margin-top: 50px;
+    }
+    #response {
+      font-size: 16px;
+      margin-top: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    #yesButton {
+      background-color: green;
+      color: white;
+    }
+    #noButton {
+      background-color: red;
+      color: white;
+    }
+    #response {
+      font-size: 26px;
+      margin-top: 20px;
+      color: cornflowerblue;
+      font-weight: 400;
+    }
+    
+  </style>
+</head>
+<body>
+  <div>
+    <h1>Will You Be My Valentine VAR=SHIT? </h1>
+    <div id="response"></div>
+
+    <button id="yesButton" onclick="respond('yes')">Yes</button>
+    <button id="noButton" onclick="respond('no')">No</button>
+    <audio id="loverSong" src="./videos/Taylor_Swift_-_Lover-Hippopcharts.com.mp3"></audio>
+  </div>
+  <script>
+    let yesSize = 16; // Initial size of 'Yes' button
+    let noCount = 0;
+    const loverSong = document.getElementById('loverSong');
+
+
+    function respond(answer) {
+      if (answer === 'yes') {
+        document.getElementById('response').innerHTML = ' <img src="./videos/kisses.gif">';
+        document.getElementById('title').textContent = 'Congratulations!'; // Change the title text
+        loverSong.play();
+       
+        document.getElementById('yesButton').style.fontSize = yesSize + 'px'; // Increase font size of 'Yes' button
+        document.querySelectorAll('button').forEach(button => {
+          button.remove();
+        });
+      } else {
+        noCount++;
+        yesSize += 4; // Increase the size of 'Yes' button by 4px each time 'No' is clicked
+        document.getElementById('yesButton').style.fontSize = yesSize + 'px'; // Update font size of 'Yes' button
+        let responseContent = document.getElementById('response');
+
+        if (noCount === 1) {
+          responseContent = 'Are you sure?';
+        } else if (noCount === 2) {
+          responseContent = 'You seem hesitant...';
+        } else if(noCount===3) {
+          responseContent = 'Baga Balsindi ra neeku'; 
+        }
+        else if(noCount===4) {
+          responseContent = 'So i am not good enough';
+        }
+        else if(noCount===5) {
+          responseContent = 'Nen chat gpt vadina'; 
+        }
+        else if(noCount===6) {
+          responseContent = 'Ah bokkale puttinapud evad ana unnara, i can buy myself flowers'; 
+        }
+        else if(noCount===7) {
+          responseContent = 'I can write my name in the sand'; 
+        }
+        else if(noCount===8) {
+          responseContent = 'Its Mileys Song'; 
+      
+        }
+        else{
+          responseContent = 'OKAY BYEE!! <img src="./videos/crazy.gif" alt="">'
+          document.querySelectorAll('button').forEach(button => {
+          button.remove();
+        });
+        }
+
+        document.getElementById('response').innerHTML = responseContent;
+      }
+    }
+  </script>
+</body>
+</html>
